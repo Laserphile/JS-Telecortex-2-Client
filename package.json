@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "jest --watch --coverage"
+    "test": "jest --watch --coverage",
+    "test-ci": "jest --ci --coverage"
   },
   "repository": {
     "type": "git",

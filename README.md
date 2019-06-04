@@ -11,7 +11,7 @@
 A rewrite of the [Telecortex](https://github.com/laserphile/telecortex) project in NodeJS which controlls APA102/SK9822 LED strips over OPC
 
 [![Build Status](https://travis-ci.org/Laserphile/JS-Telecortex-2-Client.svg?branch=master)](https://travis-ci.com/Laserphile/JS-Telecortex-2-Client)
-[![Maintainability](https://api.codeclimate.com/v1/badges/89eede666d93740400d9/maintainability)](https://codeclimate.com/github/Laserphile/JS-Telecortex-2-Client/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3a81693e65cfd8c8c555/maintainability)](https://codeclimate.com/github/Laserphile/JS-Telecortex-2-Client/maintainability)
 [![codecov](https://codecov.io/gh/Laserphile/JS-Telecortex-2-Client/branch/master/graph/badge.svg)](https://codecov.io/gh/Laserphile/JS-Telecortex-2-Client)
 [![Known Vulnerabilities](https://snyk.io/test/github/Laserphile/JS-Telecortex-2-Client/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Laserphile/JS-Telecortex-2-Client?targetFile=package.json)
 
