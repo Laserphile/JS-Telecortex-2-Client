@@ -4,8 +4,7 @@ BASE_URL=https://github.com/Laserphile/JS-Telecortex-2-Client/releases/download
 RELEASE=v0.1.2-alpha
 UNZIPPED_BINARY=essential-build-artifacts-arm7
 BINARY=${UNZIPPED_BINARY}.zip
-
-rm -rdf ${UNZIPPED_BINARY} ${BINARY}
+URL="$BASE_URL/$RELEASE/$BINARY"
 
 download-essential-build-artifacts () {
   echo "Fetching from: $URL"
