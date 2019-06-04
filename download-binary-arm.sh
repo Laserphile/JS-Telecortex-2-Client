@@ -5,6 +5,8 @@ RELEASE=v0.1.2-alpha
 UNZIPPED_BINARY=essential-build-artifacts-arm7
 BINARY=${UNZIPPED_BINARY}.zip
 
+rm -rdf ${UNZIPPED_BINARY} ${BINARY}
+
 download-essential-build-artifacts () {
   echo "Fetching from: $URL"
   wget -q -O ${BINARY} "$URL"
