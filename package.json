@@ -1,0 +1,55 @@
+{
+  "name": "@js-telecortex-2/js-telecortex-2-client",
+  "version": "0.1.2-alpha",
+  "description": "A NodeJS client for controlling APA102/SK9822 LED strips over OPC",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest --watch --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laserphile/JS-Telecortex-2-Client.git"
+  },
+  "author": "Moonbase-Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Laserphile/JS-Telecortex-2-Client/issues"
+  },
+  "homepage": "https://github.com/Laserphile/JS-Telecortex-2-Client#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.5.0",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.7",
+    "node-loader": "^0.6.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.17.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "@js-telecortex-2/js-telecortex-2-util": "^1.0.0",
+    "async": "^3.0.1",
+    "binary": "^0.3.0",
+    "chalk": "^2.4.2",
+    "colorsys": "^1.0.22",
+    "dgram": "^1.0.1",
+    "lodash": "^4.17.11",
+    "mathjs": "^5.10.3",
+    "opencv4nodejs": "^4.17.0",
+    "simplex-noise": "^2.4.0",
+    "sprintf-js": "^1.1.2",
+    "yargs": "^13.2.4"
+  }
+}
