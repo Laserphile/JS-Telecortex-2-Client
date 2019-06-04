@@ -15,7 +15,7 @@ download-essential-build-artifacts () {
 
 copy-essential-build-artifacts () {
   rm -rdf node_modules/opencv4nodejs node_modules/opencv-build
-  cp -R essential-build-artifacts/ node_modules/
+  cp -R ${UNZIPPED_BINARY}/ node_modules/
 }
 
 if [[ -d $UNZIPPED_BINARY ]]
