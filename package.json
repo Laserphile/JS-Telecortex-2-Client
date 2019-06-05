@@ -4,6 +4,7 @@
   "description": "A NodeJS client for controlling APA102/SK9822 LED strips over OPC",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon --exec yarn run babel-node -- src/client.js",
     "build": "webpack",
     "test": "jest --watch --coverage",
     "test-ci": "jest --ci --coverage"
