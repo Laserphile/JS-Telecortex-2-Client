@@ -1,0 +1,2 @@
+exclude_patterns:
+  - "opencv4node-build-patch.js"
