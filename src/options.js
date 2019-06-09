@@ -90,6 +90,9 @@ export const serverOptions = {
   'one-balenapi': {
     4: { host: '192.168.1.120', opcPort }
   },
+  'one-host': {
+    4: { host: '[host]', opcPort }
+  },
   'one-localhost': {
     4: { host: 'localhost', opcPort }
   }
@@ -116,7 +119,8 @@ export const defaultConfig = {
   mapping: 'dome_overhead',
   frameRateCap: Infinity,
   canvasSize: 512,
-  text: 'MOONBASE'
+  text: 'MOONBASE',
+  host: 'localhost'
 };
 
 export const clientArgs = defaults =>
@@ -162,6 +166,12 @@ export const clientArgs = defaults =>
           alias: 't',
           type: 'string',
           default: 'MOONBASE'
+        },
+        host: {
+          alias: 'h',
+          type: 'string',
+          default: 'localhost',
+          describe: 'the host to use in one-host server config'
         }
       },
       mapValues(defaults, val => ({ default: val }))

@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import {
   // identity,
   get,
-  flow
+  flow,
 } from 'lodash';
 import net from 'net';
 import async from 'async';
@@ -21,6 +21,9 @@ import {
   defaultConfig,
   clientArgs
 } from './options';
+import {
+  substituteConfig
+} from './util';
 
 /**
  * Context shared across all clients
@@ -31,7 +34,6 @@ const superContext = {
   driver: opcClientDriver,
   // driver: identity
   pixelLists: {},
-  servers: 'one-raspberrypi'
 };
 
 try {
@@ -44,7 +46,8 @@ try {
 /**
  * A mapping of serverID to server metadata
  */
-const serverConfigs = serverOptions[superContext.servers];
+const serverConfigs = substituteConfig(serverOptions[superContext.servers], {host: superContext.host});
+
 Object.assign(superContext, mappingOptions[superContext.mapping]);
 const animationCallbacks = animationOptions[superContext.animation];
 const middleware = get(animationCallbacks, 'middleware', []);
