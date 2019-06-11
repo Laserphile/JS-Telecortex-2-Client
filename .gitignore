@@ -5,3 +5,4 @@ coverage
 .idea
 essential-build-artifacts-arm7.zip
 essential-build-artifacts-arm7
+.domerc.json

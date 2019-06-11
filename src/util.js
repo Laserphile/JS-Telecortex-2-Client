@@ -1,26 +1,7 @@
-import {
-  mapValues
-} from 'lodash';
-
-export const substituteString = (value, substitutions) => {
-  const substitutionRegexp = /\[([^\]]*)\]/;
-  var substituted = '';
-  while (value.length > 0) {
-    const result = substitutionRegexp.exec(value);
-    if (result === null) {
-      return substituted + value;
-    }
-    substituted += value.substring(0, result.index);
-    value = value.substring(result.index);
-    if (Object.keys(substitutions).includes(result[1])) {
-      substituted += substitutions[result[1]];
-    } else {
-      substituted += value.substring(0, result[0].length);
-    }
-    value = value.substring(result[0].length);
-  }
-  return substituted;
-}
+import { msNow } from '@js-telecortex-2/js-telecortex-2-util';
+import { readFileSync } from 'fs';
+import { merge } from 'lodash';
+import { clientArgs, defaultConfig } from './options';
 
 /**
  * Performs substitutions on all strings in a nested config object
@@ -28,15 +9,35 @@ export const substituteString = (value, substitutions) => {
  * @param {object} substitutions
  */
 export const substituteConfig = (config, substitutions) => {
-  switch (typeof config) {
-    case 'string':
-      return substituteString(config, substitutions);
-    case 'object':
-      if (config instanceof Array) {
-        return config.map(item => substituteConfig(item, substitutions));
-      }
-      return mapValues(config, value => {return substituteConfig(value, substitutions);});
-    default:
-      return config;
+  let stringConfig = JSON.stringify(config);
+  Object.entries(substitutions).forEach(([key, value]) => {
+    stringConfig = stringConfig.replace(`[${key}]`, value);
+  });
+  return merge(config, JSON.parse(stringConfig));
+};
+
+/**
+ * TODO: refactor using limiter https://www.npmjs.com/package/limiter
+ * Alternatively, accept an idle() function which can ask the controller what its' queue status is like
+ * Recursively schedules a function so that it is called at most rateCap times per second
+ * @param {function} func
+ * @param {number} rateCap
+ */
+export const scheduleFunctionRecursive = (func, rateCap) => {
+  const maxTimeMs = 1000.0 / rateCap;
+  return () => {
+    const startTimeMs = msNow();
+    func();
+    const deltaTimeMs = msNow() - startTimeMs;
+    setTimeout(scheduleFunctionRecursive(func, rateCap), Math.max(0, maxTimeMs - deltaTimeMs));
+  };
+};
+
+export const loadDomerc = superContext => {
+  try {
+    const domeConfig = JSON.parse(readFileSync('.domerc.json', 'utf8'));
+    Object.assign(superContext, domeConfig, clientArgs(Object.assign(defaultConfig, domeConfig)));
+  } catch (e) {
+    Object.assign(superContext, clientArgs(defaultConfig));
   }
-}
+};

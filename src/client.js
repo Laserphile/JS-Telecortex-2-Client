@@ -1,124 +1,57 @@
-import chalk from 'chalk';
-import {
-  // identity,
-  get,
-  flow,
-} from 'lodash';
-import net from 'net';
+import { flow } from 'lodash';
 import async from 'async';
-import { readFileSync } from 'fs';
 import {
-  msNow,
-  FRESH_CONTEXT,
   CLIENT_CONF,
-  colourRateLogger
+  colourRateLogger,
+  FRESH_CONTEXT
 } from '@js-telecortex-2/js-telecortex-2-util';
 import { opcClientDriver } from './drivers/driverFactory';
-import {
-  animationOptions,
-  serverOptions,
-  mappingOptions,
-  defaultConfig,
-  clientArgs
-} from './options';
-import {
-  substituteConfig
-} from './util';
+import { animationOptions, mappingOptions, serverOptions } from './options';
+import { loadDomerc, scheduleFunctionRecursive, substituteConfig } from './util';
+import { initiateConnection } from './connection';
 
 /**
+ * TODO allow for swapping out drivers using config/yargs
  * Context shared across all clients
  */
-const superContext = {
+const createSuperContext = () => ({
   ...CLIENT_CONF,
   frameNumber: 0,
   driver: opcClientDriver,
   // driver: identity
-  pixelLists: {},
-};
-
-try {
-  const domeConfig = JSON.parse(readFileSync('.domerc.json', 'utf8'));
-  Object.assign(superContext, domeConfig, clientArgs(Object.assign(defaultConfig, domeConfig)));
-} catch (e) {
-  Object.assign(superContext, clientArgs(defaultConfig));
-}
-
-/**
- * A mapping of serverID to server metadata
- */
-const serverConfigs = substituteConfig(serverOptions[superContext.servers], {host: superContext.host});
-
-Object.assign(superContext, mappingOptions[superContext.mapping]);
-const animationCallbacks = animationOptions[superContext.animation];
-const middleware = get(animationCallbacks, 'middleware', []);
-const superMiddleware = get(animationCallbacks, 'superMiddleware', []);
-const initware = get(animationCallbacks, 'initware', []);
-const mapBased = get(animationCallbacks, 'mapBased', false);
-
-// TODO: refactor using limiter https://www.npmjs.com/package/limiter
-// Alternatively, accept an idle() function which can ask the controller what its' queue status is like
-
-/**
- * Recursively schedules a function so that it is called at most rateCap times per second
- * @param {function} thing
- * @param {number} rateCap
- */
-const scheduleThingRecursive = (thing, rateCap) => {
-  const maxTimeMs = 1000.0 / rateCap;
-  return () => {
-    const startTimeMs = msNow();
-    thing();
-    const deltaTimeMs = msNow() - startTimeMs;
-    setTimeout(scheduleThingRecursive(thing, rateCap), Math.max(0, maxTimeMs - deltaTimeMs));
-  };
-};
-
-const socketErrors = {};
-
-const initSocketPromise = (serverID, host, port) => {
-  const client = new net.Socket();
-
-  client.on('data', data => {
-    console.error(chalk`{cyan 📡 ${serverID} received} ${data.toString('hex')}`);
-    client.destroy(); // kill client after server's response
-  });
-
-  client.on('close', hadError => {
-    console.error(
-      chalk`{cyan 📡 ${serverID} closed, hadError: }{white ${JSON.stringify(hadError)}}`
-    );
-  });
-
-  serverConfigs[serverID].client = client;
-
-  return new Promise((resolve, reject) => {
-    client.on('error', err => {
-      console.error(
-        chalk`{cyan 📡 ${serverID} error} connecting to {white ${host}} on port {white ${port}} : {white ${err}}`
-      );
-      socketErrors[serverID] = err;
-      reject(err);
-    });
-
-    client.connect(port, host, () => {
-      console.log(chalk`{cyan 📡${serverID} connected} to {white ${host}} on port {white ${port}}`);
-      resolve();
-    });
-  });
-  // .catch(err => {
-  //   err;
-  // });
-};
+  pixelLists: {}
+});
 
 /**
  * Given a mapping of serverIDs to serverConfig , create sockets and initiate client
  */
 const startClients = async () => {
-  await Promise.all(
-    Object.entries(serverConfigs).map(([serverID, { host, opcPort }]) =>
-      initSocketPromise(serverID, host, opcPort)
-    )
-  ).catch(err => err);
+  const superContext = createSuperContext();
+
+  loadDomerc(superContext);
+
+  /**
+   * A mapping of serverID to server metadata
+   */
+  const serverConfigs = substituteConfig(serverOptions[superContext.servers], {
+    host: superContext.host
+  });
+
+  Object.assign(superContext, mappingOptions[superContext.mapping]);
+
+  const {
+    middleware = [],
+    superMiddleware = [],
+    initware = [],
+    mapBased = false
+  } = animationOptions[superContext.animation];
+
+  const socketErrorCallback = (serverID, err) => {
+    console.error('Error on socket: ', serverID, err);
+    return process.exit();
+  };
+
+  await initiateConnection(serverConfigs, socketErrorCallback);
 
   /**
    * The operating context for each client frame callback.
@@ -171,8 +104,6 @@ const startClients = async () => {
 
   // Awaits a complete frame to be generated and sent to all servers
   const clientsFrameCallback = async () => {
-    if (Object.values(socketErrors).length) process.exit();
-
     superContext.frameNumber += 1;
 
     flow(...superMiddleware)(superContext);
@@ -181,14 +112,15 @@ const startClients = async () => {
       pixelListsToChannelColours(clientContexts, superContext);
     }
 
+    // only call colourRateLogger on the first context
+    colourRateLogger(Object.values(clientContexts)[0]);
+
     await async.each(Object.values(clientContexts), context => {
       asyncClientFrameCallback(context);
     });
-    // only call colourRateLogger on the first context
-    colourRateLogger(Object.values(clientContexts)[0]);
   };
 
-  setTimeout(scheduleThingRecursive(clientsFrameCallback, superContext.frameRateCap), 1000);
+  setTimeout(scheduleFunctionRecursive(clientsFrameCallback, superContext.frameRateCap), 100);
 };
 
 startClients();
