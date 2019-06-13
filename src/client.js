@@ -135,4 +135,4 @@ const startClient = async () => {
   setTimeout(scheduleFunctionRecursive(clientsFrameCallback, superContext.frameRateCap), 100);
 };
 
-startClient();
+startClient().catch(err => console.error(err));
