@@ -31,12 +31,15 @@ const initSocketPromise = (serverID, host, port, socketErrorCallback) => {
   });
 };
 
-export const initiateConnection = (serverConfigs, socketErrorCallback) => {
-  return Promise.all(
-    Object.entries(serverConfigs).map(async ([serverID, { host, opcPort }]) =>
-      Object.assign(serverConfigs[serverID], {
-        client: await initSocketPromise(serverID, host, opcPort, socketErrorCallback)
-      })
-    )
-  ).catch(err => err);
+export const initiateConnection = async (serverConfigs, socketErrorCallback) => {
+  const clientArr = await Promise.all(
+    Object.entries(serverConfigs).map(async ([serverID, { host, opcPort }]) => [
+      serverID,
+      await initSocketPromise(serverID, host, opcPort, socketErrorCallback)
+    ])
+  );
+  return clientArr.reduce(
+    (acc, [serverId, client]) => Object.assign(acc, { [serverId]: client }),
+    {}
+  );
 };

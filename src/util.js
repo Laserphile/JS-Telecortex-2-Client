@@ -33,11 +33,14 @@ export const scheduleFunctionRecursive = (func, rateCap) => {
   };
 };
 
-export const loadDomerc = superContext => {
+export const loadDomerc = () => {
   try {
     const domeConfig = JSON.parse(readFileSync('.domerc.json', 'utf8'));
-    Object.assign(superContext, domeConfig, clientArgs(Object.assign(defaultConfig, domeConfig)));
+    return {
+      ...domeConfig,
+      ...clientArgs(Object.assign(defaultConfig, domeConfig))
+    };
   } catch (e) {
-    Object.assign(superContext, clientArgs(defaultConfig));
+    return clientArgs(defaultConfig);
   }
 };
