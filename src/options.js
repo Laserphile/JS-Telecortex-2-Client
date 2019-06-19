@@ -21,6 +21,7 @@ import {
   MAPS_SQUARE_SERP_12,
   PANELS_SQUARE_SERP_12,
   PANELS_ONE_BIG_TRIANGLE,
+  PANELS_DOME_SIMPLIFIED,
   PANELS_ONE_SMOL_TRIANGLE
 } from './mapping';
 
@@ -121,6 +122,10 @@ export const mappingOptions = {
   one_smol_triangle: {
     pixMaps: MAPS_DOME_SIMPLIFIED,
     panels: PANELS_ONE_SMOL_TRIANGLE
+  },
+  simplified: {
+    pixMaps: MAPS_DOME_SIMPLIFIED,
+    panels: PANELS_DOME_SIMPLIFIED
   }
 };
 
