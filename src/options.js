@@ -15,10 +15,13 @@ import { canvasInit, previewInit, videoInit } from './drivers/initializers';
 import {
   MAPS_DOME_OVERHEAD,
   PANELS_DOME_OVERHEAD,
+  MAPS_DOME_SIMPLIFIED,
   MAPS_SQUARE_SERP_9,
   PANELS_SQUARE_SERP_9,
   MAPS_SQUARE_SERP_12,
-  PANELS_SQUARE_SERP_12
+  PANELS_SQUARE_SERP_12,
+  PANELS_ONE_BIG_TRIANGLE,
+  PANELS_ONE_SMOL_TRIANGLE
 } from './mapping';
 
 export const animationOptions = {
@@ -110,6 +113,14 @@ export const mappingOptions = {
   dome_overhead: {
     pixMaps: MAPS_DOME_OVERHEAD,
     panels: PANELS_DOME_OVERHEAD
+  },
+  one_big_triangle: {
+    pixMaps: MAPS_DOME_SIMPLIFIED,
+    panels: PANELS_ONE_BIG_TRIANGLE
+  },
+  one_smol_triangle: {
+    pixMaps: MAPS_DOME_SIMPLIFIED,
+    panels: PANELS_ONE_SMOL_TRIANGLE
   }
 };
 
