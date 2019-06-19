@@ -22,7 +22,8 @@ import {
   PANELS_SQUARE_SERP_12,
   PANELS_ONE_BIG_TRIANGLE,
   PANELS_DOME_SIMPLIFIED,
-  PANELS_ONE_SMOL_TRIANGLE
+  PANELS_ONE_SMOL_TRIANGLE,
+  PANELS_DOME_SIMPLIFIED_SINGULAR
 } from './mapping';
 
 export const animationOptions = {
@@ -126,6 +127,10 @@ export const mappingOptions = {
   simplified: {
     pixMaps: MAPS_DOME_SIMPLIFIED,
     panels: PANELS_DOME_SIMPLIFIED
+  },
+  simplified_singular: {
+    pixMaps: MAPS_DOME_SIMPLIFIED,
+    panels: PANELS_DOME_SIMPLIFIED_SINGULAR
   }
 };
 

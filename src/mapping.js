@@ -60,6 +60,10 @@ export const PANELS_DOME_SIMPLIFIED = {
   4: { 0: 'big', 1: 'smol', 2: 'smol', 3: 'smol' }
 };
 
+export const PANELS_DOME_SIMPLIFIED_SINGULAR = {
+  4: { 0: 'big', 1: 'smol', 2: 'smol', 3: 'smol' }
+};
+
 export const MAPS_DOME = {
   smol: normalizePixMap(PIXEL_MAP_DOME_SMOL),
   big: normalizePixMap(PIXEL_MAP_DOME_BIG),
