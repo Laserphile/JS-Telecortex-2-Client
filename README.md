@@ -51,7 +51,7 @@ IF you are stuck on this for ages its a good thing:
 Try this: ¯\\\_(ツ)\_/¯
 ```bash
 yarn --ignore-scripts
-./download-binary.sh
+./bin/download-binary.sh
 ```
 
 ### Balena dev setup
