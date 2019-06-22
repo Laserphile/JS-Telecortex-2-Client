@@ -6,3 +6,7 @@ coverage
 essential-build-artifacts-arm7.zip
 essential-build-artifacts-arm7
 .domerc.json
+
+\.vscode/launch\.json
+
+package-lock\.json
