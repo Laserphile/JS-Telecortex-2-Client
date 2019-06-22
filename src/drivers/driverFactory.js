@@ -5,18 +5,10 @@ import {
   composeOPCMessage
 } from '@js-telecortex-2/js-telecortex-2-util';
 
-// const transferDataAsync = async (spi, dataBuff) => {
-//   return await Promise((resolve, reject) => {
-//     spi.transfer(dataBuff, dataBuff.length, (err, data) => {
-//       if (err) reject(err);
-//       resolve(data);
-//     });
-//   });
-// };
-
 /**
  * Given a context containing a list of spi device specifications and LED data,
- * Send data to all LEDs
+ * Send data to all LEDs.
+ * Use this as your driver to write directly to LEDs
  * @param {object} context The context under which the ledDriver operates
  */
 export const ledDriver = context => {
@@ -31,6 +23,7 @@ export const ledDriver = context => {
 
 /**
  * Given a context containing a mapping of channel numbers to colours, send data over OPC
+ * Use this as your driver to send colours to an OPC server
  * @param {object} context
  */
 export const opcClientDriver = context => {
