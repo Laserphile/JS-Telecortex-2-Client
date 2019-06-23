@@ -1,7 +1,6 @@
 import cv from 'opencv4nodejs';
 import fs from 'fs';
-import { denormalizeCoordinate } from '@js-telecortex-2/js-telecortex-2-util';
-import { interpolatePixel, interpolatePixelMap } from './interpolation';
+import { interpolatePixel, interpolatePixelMap, denormalizeCoordinate } from './interpolation';
 
 const testFilename = 'src/test-data/rainbow.png';
 
@@ -19,6 +18,7 @@ describe('interpolatePixel', () => {
     expect(() => interpolatePixel(img, [0, 0], 'foo')).toThrow();
   });
 });
+
 describe('denormalizeCoordinate', () => {
   [
     {
@@ -52,6 +52,7 @@ describe('denormalizeCoordinate', () => {
     });
   });
 });
+
 describe('interpolatePixelMap', () => {
   it('works', () => {
     expect(
