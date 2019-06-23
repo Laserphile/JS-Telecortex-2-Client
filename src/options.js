@@ -16,6 +16,8 @@ import {
   MAPS_DOME_OVERHEAD,
   PANELS_DOME_OVERHEAD,
   MAPS_DOME_SIMPLIFIED,
+  MAPS_SQUARE_SERP_4,
+  PANELS_SQUARE_SERP_4,
   MAPS_SQUARE_SERP_9,
   PANELS_SQUARE_SERP_9,
   MAPS_SQUARE_SERP_12,
@@ -107,6 +109,10 @@ export const mappingOptions = {
   square_serp_12: {
     pixMaps: MAPS_SQUARE_SERP_12,
     panels: PANELS_SQUARE_SERP_12
+  },
+  square_serp_4: {
+    pixMaps: MAPS_SQUARE_SERP_4,
+    panels: PANELS_SQUARE_SERP_4
   },
   square_serp_9: {
     pixMaps: MAPS_SQUARE_SERP_9,

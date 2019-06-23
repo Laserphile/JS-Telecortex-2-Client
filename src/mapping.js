@@ -7,6 +7,7 @@ import PIXEL_MAP_DOME_OUTER from './test-data/pixel_map_outer.json';
 import PIXEL_MAP_DOME_OUTER_FLIP from './test-data/pixel_map_outer_flip.json';
 import PIXEL_MAP_SQUARE_SERP_12 from './test-data/pixel_map_square_serp_12.json';
 import PIXEL_MAP_SQUARE_SERP_9 from './test-data/pixel_map_square_serp_9.json';
+import PIXEL_MAP_SQUARE_SERP_4 from './test-data/pixel_map_square_serp_4.json';
 
 export {
   PIXEL_MAP_DOME_SMOL,
@@ -14,7 +15,8 @@ export {
   PIXEL_MAP_DOME_OUTER,
   PIXEL_MAP_DOME_OUTER_FLIP,
   PIXEL_MAP_SQUARE_SERP_12,
-  PIXEL_MAP_SQUARE_SERP_9
+  PIXEL_MAP_SQUARE_SERP_9,
+  PIXEL_MAP_SQUARE_SERP_4
 };
 
 // export const isCloseTo = (value, target, epsilon = 0.01) => {
@@ -84,6 +86,14 @@ export const MAPS_SQUARE_SERP_9 = {
 };
 
 export const PANELS_SQUARE_SERP_9 = {
+  4: { 0: 'square' }
+};
+
+export const MAPS_SQUARE_SERP_4 = {
+  square: normalizePixMap(PIXEL_MAP_SQUARE_SERP_4)
+};
+
+export const PANELS_SQUARE_SERP_4 = {
   4: { 0: 'square' }
 };
 
