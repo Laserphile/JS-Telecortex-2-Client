@@ -28,6 +28,22 @@ There are many ways to scream in frustration about opencv4nodejs. But this is my
 
 Make sure your Node version is shit. My favorite outdated version is `v11.15.0`. Anything newer and you are in the *_\*DANGER ZONE\*_*.
 
+```bash
+brew install nvm
+```
+Follow the instructions output by brew to install nvm. it might look something like this
+```
+mkdir ~/.nvm
+cat << EOF >> ~/.zshrc
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+EOF
+```
+```
+nvm install 11.15
+```
+
 Make sure opencv is *not* installed. Seriously, I spent days on this and only a pristine slate worked for me.
 - `brew uninstall opencv opencv@2 opencv@3`
 - `brew uninstall ffmpeg tesseract`
