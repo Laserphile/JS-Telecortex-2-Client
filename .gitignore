@@ -10,3 +10,5 @@ essential-build-artifacts-arm7
 \.vscode/launch\.json
 
 package-lock\.json
+
+yarn-error\.log
