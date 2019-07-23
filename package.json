@@ -7,7 +7,9 @@
     "dev": "nodemon --exec yarn run babel-node -- src/client.js",
     "build": "webpack",
     "test": "jest --watch --coverage",
-    "test-ci": "jest --ci --coverage"
+    "test-ci": "jest --ci --coverage",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -52,6 +54,8 @@
     "opencv4nodejs": "^4.17.0",
     "simplex-noise": "^2.4.0",
     "sprintf-js": "^1.1.2",
-    "yargs": "^13.2.4"
-  }
+    "yargs": "^13.2.4",
+    "snyk": "^1.197.0"
+  },
+  "snyk": true
 }
