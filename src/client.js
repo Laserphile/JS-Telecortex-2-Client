@@ -113,7 +113,7 @@ const startClients = async () => {
     }
 
     // only call colourRateLogger on the first context
-    colourRateLogger(Object.values(clientContexts)[0]);
+    colourRateLogger(Object.values(clientContexts)[0] || {});
 
     await async.each(Object.values(clientContexts), context => {
       asyncClientFrameCallback(context);
