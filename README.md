@@ -64,10 +64,19 @@ IF you are stuck on this for ages its a good thing:
 [-/10] ⡀ waiting...
 ```
 ### You lied and it still fails to build
+
 Try this: ¯\\\_(ツ)\_/¯
 ```bash
-yarn --ignore-scripts
-./bin/download-binary.sh
+nvm install 11.15
+brew uninstall yarn
+brew install yarn
+rm -rf node_modules
+yarn
+yarn add opencv4nodejs
+brew update
+brew install opencv@4
+brew link --force opencv@4
+yarn add opencv4nodejs
 ```
 
 ### Balena dev setup
