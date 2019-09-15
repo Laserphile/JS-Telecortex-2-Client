@@ -828,10 +828,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@js-telecortex-2/js-telecortex-2-util@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@js-telecortex-2/js-telecortex-2-util/-/js-telecortex-2-util-1.0.0.tgz#9199193b8af5cea50158f5a53d3adfc02e5781f0"
-  integrity sha512-EPFH/QQ1iFY6cGNrA21J9k7nuY6V7xyvC+WEFR1oFSbAbPKj+gz0zGvz1UFUEUrcSi8+uXqJJDYPp58C9WDlBw==
+"@js-telecortex-2/js-telecortex-2-util@1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@js-telecortex-2/js-telecortex-2-util/-/js-telecortex-2-util-1.1.6.tgz#06f3a8327a1ab239f85918c3c9c92fc5a4f71240"
+  integrity sha512-rd7UpNAwKovHrHU7bO0zdtVOxSF+uJXnL4cUaJmAKtwYw6EWdgyOA6H4gO0KYt6DGVNkkRuLIkHT5W1fub4hGA==
   dependencies:
     chalk "^2.4.2"
     colorsys "^1.0.22"
@@ -898,14 +898,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/node@>6":
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
-  integrity sha512-j8YL2C0fXq7IONwl/Ud5Kt0PeXw22zGERt+HSSnwbKOJVsAGkEz3sFCYwaF9IOuoG1HOtE0vKCj6sXF7Q0+Vaw==
-
-"@types/node@^11.10.5":
-  version "11.13.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.13.tgz#a3d2a8a908ce322f24f0f8c88160b44c7dd5c452"
-  integrity sha512-GFWH7e4Q/OGLAO545bupVju+nE1YtLSwYAdLfSzAXnTPqoqKoXCOEtB7Cluvg9B/h2nGLhyzCDyCInYvrOE2nw==
+  version "12.7.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.5.tgz#e19436e7f8e9b4601005d73673b6dc4784ffcc2f"
+  integrity sha512-9fq4jZVhPNW8r+UYKnxF1e2HkDWOWKM5bC2/7c9wPV835I0aOrVbS/Hw/pWPk2uKrNXQqg9Z959Kz+IYDd5p3w==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -4725,7 +4720,7 @@ mute-stream@0.0.7:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
 
-nan@^2.12.1, nan@^2.13.2:
+nan@^2.12.1, nan@^2.13.2, nan@^2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
@@ -4747,10 +4742,10 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-native-node-utils@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/native-node-utils/-/native-node-utils-0.1.7.tgz#9de38af402c74749be75b1fcb5eae0658a1db3a8"
-  integrity sha512-Jl8WwXWpc+CQfuTgThW5xUyLn0+hNQg+JQ3w1KTnWskJqX0WA7b6jO9fbcmldTZJpimygOW6I6HtkpYdCnnwTQ==
+native-node-utils@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/native-node-utils/-/native-node-utils-0.2.7.tgz#dbf7fca4cfee579585d5e04d4564749bd56534a3"
+  integrity sha512-61v0G3uVxWlXHppSZGwZi+ZEIgGUKI8QvEkEJLb1GVePI7P8SBe+G747z+QMXSt4TxfgbVZP0DyobbRKYVIjdw==
   dependencies:
     nan "^2.13.2"
 
@@ -5053,22 +5048,21 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-opencv-build@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/opencv-build/-/opencv-build-0.1.3.tgz#059daf3b82e9d43b528d47e43bde0efe24ebb0cc"
-  integrity sha512-eKivO37jg204v3yeaxmGXlm4JjsMal3Oc4LQwosS7pPB5JKEXqG9TRk5GSCqnCtgcIL5qfjGBz/wwYTF7VZGFg==
+opencv-build@^0.1.5:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/opencv-build/-/opencv-build-0.1.9.tgz#e10f08c4fbfd674ffd498214420883530483cbf9"
+  integrity sha512-tgT/bnJAcYROen9yaPynfK98IMl62mPSgMLmTx41911m5bczlq21xtE5r+UWLB/xEo/0hKk6tl5zHyxV/JS5Rg==
   dependencies:
-    "@types/node" "^11.10.5"
     npmlog "^4.1.2"
 
-opencv4nodejs@^4.17.0:
-  version "4.17.0"
-  resolved "https://registry.yarnpkg.com/opencv4nodejs/-/opencv4nodejs-4.17.0.tgz#a11b4c64007c759d08e85a27df92cc962a2fa2fd"
-  integrity sha512-p5iKEX0N/VxpveGDeHNMJJwjWd5ggzSVgIqUKCCE8aUDgGIXdZWfZGHA37cS9y2hLVjkI3pvHMVwnm0W1me5Vw==
+opencv4nodejs@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/opencv4nodejs/-/opencv4nodejs-5.2.0.tgz#ce106302b9292cc431aa2ec9943f58664db6e3ac"
+  integrity sha512-3AO+mFFu39LXo9Q6E5MxUDhaiAGx5u9rbuvXN44Oe9oQMHihBHQoXPKYBoJlGZ7aoiusWD2Y/i1pgBnYZKAhDw==
   dependencies:
-    nan "^2.13.2"
-    native-node-utils "^0.1.7"
-    opencv-build "^0.1.3"
+    nan "^2.14.0"
+    native-node-utils "^0.2.7"
+    opencv-build "^0.1.5"
   optionalDependencies:
     "@types/node" ">6"
 
