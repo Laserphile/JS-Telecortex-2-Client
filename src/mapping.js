@@ -99,11 +99,11 @@ export const PANELS_SQUARE_SERP_4 = {
 
 export const PANELS_ONE_BIG_TRIANGLE = {
   4: { 0: 'big'}
-}
+};
 
 export const PANELS_ONE_SMOL_TRIANGLE = {
   4: { 0: 'smol'}
-}
+};
 
 /**
  * Convert from radians to degrees
