@@ -71,7 +71,7 @@ const startClients = async () => {
     {}
   );
 
-  const pixelListsToChannelColours = () => {
+  const pixelListsToChannelColours = (clientContexts, superContext) => {
     Object.keys(clientContexts).forEach(serverID => {
       if (!Object.keys(superContext.panels).includes(serverID)) {
         const err = new Error(`panels not mapped for serverID ${serverID}`);
