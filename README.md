@@ -99,18 +99,28 @@ yarn dev
 #### Run the client (your computer) in development mode (refreshing on change)
 
 ```
-yarn dev-client
+yarn dev
 ```
-client options
+client options (`yarn dev --help`)
 ```
 Options:
-  --help           Show help                                           [boolean]
-  --version        Show version number                                 [boolean]
-  --animation, -a  Pick which animation is displayed
-        [choices: "singleRainbow", "rainbowFlow", "justBlack", "directRainbows",
-                              "directSimplexRainbows", "basicRainbows", "video"]
-  --servers        Pick which servers are used
-                           [choices: "five", "one-raspberrypi", "one-localhost"]
-  --mapping, -m    Pick which mapping is used
-                   [choices: "square_serp_12", "square_serp_9", "dome_overhead"]
+  --help               Show help                                       [boolean]
+  --version            Show version number                             [boolean]
+  --animation                                 [default: "directSimplexRainbows"]
+  --servers                                                    [default: "five"]
+  --mapping                                           [default: "dome_overhead"]
+  --videoFile          Pick the video used in the video animation
+  --enablePreview, -p                                                  [boolean]
+  --frameRateCap                                             [default: Infinity]
+  --canvasSize                                                    [default: 512]
+  --text                                                   [default: "MOONBASE"]
+  --host                                                  [default: "localhost"]
+```
+
+Examples:
+```bash
+yarn dev --animation 'rainbowText' --servers 'one-host' --host '10.1.1.53' --mapping 'square_serp_12' --canvasSize 12 --frameRateCap 20 --text 'BEANS'
+```
+```bash
+yarn dev --animation 'directSimplexRainbows' --servers 'one-raspberrypi' --mapping 'square_serp_12' --frameRateCap 20
 ```
