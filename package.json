@@ -52,6 +52,6 @@
     "opencv4nodejs": "^5.2.0",
     "simplex-noise": "^2.4.0",
     "sprintf-js": "^1.1.2",
-    "yargs": "^13.2.4"
+    "yargs": "^16.0.0"
   }
 }
