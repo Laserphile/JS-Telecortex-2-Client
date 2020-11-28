@@ -48,7 +48,7 @@
     "colorsys": "^1.0.22",
     "dgram": "^1.0.1",
     "lodash": "^4.17.20",
-    "mathjs": "^5.10.3",
+    "mathjs": "^7.5.1",
     "opencv4nodejs": "^5.2.0",
     "simplex-noise": "^2.4.0",
     "sprintf-js": "^1.1.2",
